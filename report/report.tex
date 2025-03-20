@@ -7,188 +7,77 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 
-% Questo commentalo se vuoi scrivere in inglese.
 \usepackage[italian]{babel}
 
 \usepackage[italian]{cleveref}
 
-\title{Meta-relazione per\\``Programmazione ad Oggetti''}
+\title{Relazione del progetto\\''Coffee Break''}
 
-\author{Danilo Pianini}
+\author{
+	Grazia Bochdanovits de Kavna\\
+	Lorenzo Boccuzzi\\
+	Alessandro Rebosio\\
+	Filippo Ricciotti\\
+}
 \date{\today}
-
 
 \begin{document}
 
 \maketitle
 
-\begin{abstract}
-Questo documento è una relazione di meta livello, ossia una relazione che spiega come scrivere la relazione.
-%
-Lo scopo di questo documento è quello di aiutare gli studenti a comprendere quali punti trattare nella loro relazione, ed in che modo farlo, evitando di perdere del tempo prezioso in prolisse discussioni di aspetti marginali tralasciando invece aspetti di maggior rilievo.
-%
-Per ciascuna delle sezioni del documento sarà fornita una descrizione di ciò che ci si aspetta venga prodotto dal team di sviluppo, assieme ad un elenco (per forza di cose non esaustivo) di elementi che \emph{non} dovrebbero essere inclusi.
-
-Il modello della relazione segue il processo tradizionale di ingegneria del software fase per fase (in maniera semplificata).
-%
-La struttura della relazione non è indicativa ma \textit{obbligatoria}.
-%
-Gli studenti dovranno produrre un documento che abbia la medesima struttura, non saranno accettati progetti la cui relazione non risponda al requisito suddetto.
-%
-Lo studente attento dovrebbe sforzarsi di seguire le tappe suggerite in questa relazione anche per l'effettivo sviluppo del progetto: oltre ad una considerevole semplificazione del processo di redazione di questo documento, infatti, il gruppo beneficerà di un processo di sviluppo più solido e collaudato, di tipo top-down.
-
-La meta-relazione verrà fornita corredata di un template \LaTeX{} per coloro che volessero cimentarsi nell'uso.
-%
-L'uso di \LaTeX{} è vantaggioso per chi ama l'approccio ``what you mean is what you get'', ossia voglia disaccoppiare il contenuto dall'effettivo rendering del documento, accollando al motore \LaTeX{} l'onere di produrre un documento gradevole con la struttura ed il contenuto forniti.
-%
-Chi non volesse installare l'ambiente di compilazione in locale può valutare l'utilizzo dell'applicazione web \href{https://www.overleaf.com/}{Overleaf}.
-%
-L'eventuale utilizzo di \LaTeX{} non è fra i requisiti,
-non è parte del corso di Programmazione ad Oggetti, e non sarà ovviamente valutato.
-%
-I docenti accetteranno qualunque relazione in formato standard Portable Document Format (pdf), indipendentemente dal software con cui tale documento sarà redatto.
-
-Per la realizzazione degli schemi UML, si raccomanda l'utilizzo di MermaidJS\footnote{\url{https://mermaid.live/}} o PlantUML \footnote{\url{https://plantuml.com/}}.
-%
-Gli schemi in questa relazione furono realizzati con StarUML.
-%
-Come per la prosa, non è importante quale strumento sia utilizzato, ma è vitale che gli schemi siano di buona qualità e ben leggibili.
-
-\end{abstract}
-
 \tableofcontents
 
 \chapter{Analisi}
 
-In questo capitolo andrà fatta l'analisi dei requisiti e quella del problema, ossia verranno elencate le cose che
-l'applicazione dovrà fare (requisiti) e verrà descritto il dominio applicativo (analisi del problema).
-%
-In fase di analisi, è molto importante tenere a mente che non vi deve essere alcun riferimento al design né tantomeno
-alle tecnologie implementative, ovvero, non si deve indicare come il software sarà internamente realizzato.
-%
-La fase di analisi, infatti, \textit{precede} qualunque azione di design o di implementazione.
-
 \section{Descrizione e requisiti}
 
-Nella sezione di descrizione va descritto cosa il software deve fare.
-%
-Al termine della lettura della sezione,
-il docente deve avere un'idea molto chiara di cosa l'applicazione sia
-e di cosa essa debba fare.
-%
-Si consiglia di elencare i requisiti in modo schematico, idealmente separando i requisiti funzionali
-(\emph{cosa} fa il sistema)
-da quelli non funzionali
-(\emph{come} lo fa, ad esempio in termini di prestazioni, sicurezza, portabilità).
+Il software coffeBreak è una versione semplificata del classico gioco arcade "Donkey Kong" del 1981. L'obiettivo 
+del giocatore è controllare Mario, evitando ostacoli e raggiungendo la cima del livello per salvare Pauline 
+dalle grinfie di Donkey Kong.
 
-\subsection*{Elementi positivi}
+Ogni livello presenta piattaforme, scale e barili lanciati da Donkey Kong, che il giocatore deve 
+schivare o saltare per avanzare. Il gioco si articola in più round con difficoltà crescente, introducendo 
+nuovi ostacoli e velocità incrementale. 
+Il punteggio aumenta in base al numero di ostacoli evitati e ai livelli completati.
+
+\subsection*{Requisiti funzionali}
 \begin{itemize}
-	\item Si fornisce una descrizione in linguaggio naturale di ciò che il software dovrà fare.
-	\item Gli obiettivi sono spiegati con chiarezza, per punti.
-	\item Se vi sono termini il cui significato non è immediatamente intuibile, essi vengono spiegati.
-	\item Vengono descritti separatamente requisiti funzionali e non funzionali.
+	\item Il giocatore può controllare Mario con movimenti sinistra, destra, salto e salita/discesa scale.
+	\item Il livello è completato quando Mario raggiunge Pauline.
+	\item Donkey Kong lancerà barili a intervalli regolari con traiettorie variabili.
+	\item Il gioco presenta punti accumulati per ogni ostacolo superato e bonus per la velocità di completamento.
+	\item La difficoltà aumenta progressivamente con nuovi pattern di lancio di barili, nemici e ostacoli dinamici.
+	\item Implementazione di un sistema di vite: il giocatore perde una vita se viene colpito da un barile.
 \end{itemize}
-
-\subsection*{Elementi negativi}
+\subsection*{Requisiti funzionali}
 \begin{itemize}
-	\item Si forniscono indicazioni circa le soluzioni che si vogliono adottare.
-	\item Si forniscono dettagli di tipo tecnico o implementativo (parlando di classi, linguaggi di programmazione, librerie, eccetera).
+	\item Il gioco deve avere una grafica retro in pixel art con animazioni fluide.
+	\item Deve supportare un frame rate stabile per garantire una buona esperienza di gioco.
+	\item Deve essere compatibile su più sistemi operativi (Windows, Mac, Linux).
+	\item Il codice deve essere modulare e facilmente estendibile per future implementazioni.
 \end{itemize}
-
-\subsection*{Esempio}
-Il software, commissionato dal centro di ricerca ``Aperture Laboratories Inc.''\footnote{
-\url{https://www.youtube.com/watch?v=f7ZS97eW2yE}
-}, mira alla costruzione di una intelligenza artificiale di nome GLaDOS (Genetic Lifeform and Disk Operating System).
-%
-Per intelligenza artificiale si intende un software in grado di assumere decisioni complesse in maniera semi autonoma sugli argomenti di sua competenza, a partire dai vincoli e dagli obiettivi datigli dall'utente.
-%
-In questo caso particolare, l'intelligenza artificiale dovrà interagire con un soggetto umano
-e guidarlo attraverso il superamento di una serie di labirinti di difficoltà incrementale.
-%
-I labirinti potrebbero richiedere l'uso di oggetti, la pressione di pulsanti, l'azionamento di leve,
-o la costruzione di portali per il teletrasporto.
-%
-Un portale per il teletrasporto è un'apertura bidimensionale nel tessuto spazio-temporale,
-che consente a chiunque vi entri di uscire dall'altro portale.
-%
-I rompicapi sono di tipo fisico (ad
-esempio, manipolazione di oggetti, pressione di pulsanti, azionamento di leve), e si ritengono
-conclusi una volta che il soggetto riesce a trovare l'uscita dalla camera di test.
-%
-Alla conclusione di tutti i labirinti,
-al soggetto verrà offerta una torta.
-\definecolor{lie}{HTML}{FAFAFA}
-\textcolor{lie}{\ldots Or not. The cake is a \underline{lie!}}
-
-\subsubsection{Requisiti funzionali}
-\begin{itemize}
-	\item Il piano preciso ed il numero delle sfide sarà variabile,
-	e GLaDOS dovrà essere in grado di adattarsi dinamicamente e di fornire indicazioni di guida.
-	\item La personalità di GLaDOS dovrà essere modificabile.
-	\item GLaDOS dovrà essere in grado di comunicare col reparto cucina di Aperture
-	per ordinare torte per coloro che completassero tutti i test con successo.
-\end{itemize}
-
-\subsubsection{Requisiti non funzionali}
-\begin{itemize}
-	\item GLaDOS dovrà essere estremamente efficiente nell'uso delle risorse. Le specifiche tecniche parlano della possibilità di funzionare su dispositivi alimentati da una batteria a patata.
-\end{itemize}
-
 
 \section{Modello del Dominio}
 
-In questa sezione si descrive il modello del \textit{dominio
-applicativo}, descrivendo le \textit{entità} in gioco ed i rapporti fra loro.
-%
-Si possono sollevare eventuali aspetti particolarmente impegnativi, descrivendo perché lo sono, senza inserire idee circa possibili soluzioni, ovvero sull'organizzazione interna del software.
-%
-Infatti, la fase di analisi va effettuata \textbf{prima} del progetto: né il progetto né il software esistono nel momento in cui si effettua l'analisi.
-%
-La discussione di aspetti propri del software (ossia, della \textit{soluzione} al problema e non del problema stesso) appartengono alla sfera della progettazione, e vanno discussi successivamente.
+Il gioco è strutturato in una serie di round, ognuno dei quali presenta un layout 
+differente di piattaforme. Le piattaforme sono superfici su cui il personaggio, 
+controllato dal giocatore, può camminare, saltare e interagire. In aggiunta, sono presenti 
+delle scale che il personaggio deve salire per completare ogni round.
 
-È obbligatorio fornire uno schema UML del dominio, che diventerà anche lo scheletro della
-parte ``entity'' del modello dell'applicazione, ovvero degli elementi costitutivi del modello (in ottica MVC - Model View Controller): se l'analisi è ben fatta, dovreste ottenere una gerarchia di concetti che rappresentano le entità che compongono il problema da risolvere.
-%
-Un'analisi ben svolta \textbf{prima} di cimentarsi con lo sviluppo rappresenta un notevole aiuto per
-le fasi successive: è sufficiente descrivere a parole il dominio, quindi estrarre i sostantivi
-utilizzati, capire il loro ruolo all'interno del problema, le relazioni che intercorrono fra loro, e
-reificarli in interfacce.
+Il giocatore controlla un personaggio in un contesto simile a quello di Donkey Kong, con 
+l'obiettivo di evitare i barili e di raggiungere Pauline. Durante il 
+percorso, il personaggio può raccogliere power-up e monete che incrementano il punteggio.
 
-\subsection*{Elementi positivi}
-\begin{itemize}
-	\item Si modella il dominio in forma di UML\@.
-	\item Viene descritto accuratamente il modello del dominio.
-	\item Il modello cattura le entità di dominio, le loro caratteristiche principali,
-	\item e le relazioni che intercorrono fra di loro.
-\end{itemize}
+All'avvio del gioco, viene mostrato un menu iniziale che consente di avviare la partita 
+o uscire dal gioco. Una volta avviata la partita, il personaggio può essere controllato 
+tramite input da tastiera, e interagirà con gli oggetti e gli elementi presenti nel gioco.
 
-\subsection*{Elementi negativi}
-\begin{itemize}
-	\item Manca una descrizione a parole del modello del dominio.
-	\item Manca una descrizione UML delle entità del dominio e delle relazioni che intercorrono fra loro.
-	\item Vengono presentati elementi di design, o peggio, implementativi.
-	\item Viene mostrato uno schema UML che include elementi implementativi o non utili alla descrizione del dominio,
-	ma volti alla soluzione (non devono vedersi, ad esempio, campi o metodi privati).
-\end{itemize}
+In caso di sconfitta, il giocatore avrà la possibilità di tornare al menu principale e 
+avviare una nuova partita. Il punteggio ottenuto sarà visibile in un'area designata dello 
+schermo, e aumenterà progressivamente man mano che il gioco prosegue. Inoltre, sarà 
+possibile mettere il gioco in pausa e riprenderlo quando desiderato.
 
-\subsection*{Esempio}
-GLaDOS dovrà essere in grado di accedere ad un'insieme di camere di test.
-%
-Tale insieme di camere prende il nome di percorso.
-%
-Ciascuna camera è composta di challenge successivi.
-%
-GLaDOS è responsabile di associare a ciascun challenge un insieme di consigli (suggestions) destinati all'utente (subject), dipendenti da possibili eventi.
-%
-GLaDOS dovrà poter comunicare coi locali cucina per approntare le torte.
-%
-Le torte potranno essere dolci, oppure semplici promesse di dolci che verranno disattese.
-%
-Gli elementi costitutivi il problema sono sintetizzati in \Cref{img:analysis}.
-
-Data la complessità di elaborare consigli via AI senza intervento umano, la prima versione del software fornita prevederà una serie di consigli forniti dall'utente.
-%
-Il requisito non funzionale riguardante il consumo energetico richiederà studi specifici sulle performance di GLaDOS che non potranno essere effettuati all'interno del monte ore previsto: tale feature sarà oggetto di futuri lavori.
+Un aspetto importante del gioco è che il personaggio, Mario, perderà una vita se dovesse cadere da una grande altezza, aggiungendo un ulteriore livello di difficoltà e di attenzione nella gestione dei salti e dei movimenti.
 
 \begin{figure}[H]
 	\centering{}
@@ -197,92 +86,15 @@ Il requisito non funzionale riguardante il consumo energetico richiederà studi 
 	\label{img:analysis}
 \end{figure}
 
+
 \chapter{Design}
-
-In questo capitolo si spiegano le strategie messe in campo per soddisfare i requisiti identificati nell'analisi.
-
-Si parte da una visione architetturale, il cui scopo è informare il lettore di quale sia il funzionamento dell'applicativo realizzato ad alto livello.
-%
-In particolare, è necessario descrivere accuratamente in che modo i componenti principali del sistema si coordinano fra loro.
-%
-A seguire, si dettagliano alcune parti del design, quelle maggiormente rilevanti al fine di chiarificare la logica con cui sono stati affrontati i principali aspetti dell'applicazione.
-
 \section{Architettura}
 
-Questa sezione spiega come le componenti principali del software interagiscono fra loro.
-%
-In particolare, qui va spiegato \textbf{se} e \textbf{come} è stato utilizzato il pattern
-architetturale model-view-controller (e/o alcune sue declinazioni specifiche, come entity-control-boundary).
-
-Se non è stato utilizzato MVC, va spiegata in maniera molto accurata l'architettura scelta, giustificandola in modo appropriato.
-
-Se è stato scelto MVC, vanno identificate con precisione le interfacce e classi che rappresentano i punti d'ingresso per modello, view, e controller.
-Raccomandiamo di sfruttare la definizione del dominio fatta in fase di analisi per capire quale sia l'entry point del model, e di non realizzare un'unica macro-interfaccia che, spesso, finisce con l'essere il prodromo ad una ``God class''.
-%
-Consigliamo anche di separare bene controller e model, facendo attenzione a non includere nel secondo strategie d'uso che appartengono al primo.
-
-In questa sezione vanno descritte, per ciascun componente architetturale che ruoli ricopre (due o tre ruoli al massimo), ed in che modo interagisce (ossia, scambia informazioni) con gli altri componenti dell'architettura.
-%
-Raccomandiamo di porre particolare attenzione al design dell'interazione fra view e controller: se ben progettato, sostituire in blocco la view non dovrebbe causare alcuna modifica nel controller (tantomeno nel model).
-
-\subsection*{Elementi positivi}
-\begin{itemize}
- \item Si mostrano pochi, mirati schemi UML dai quali si deduce con chiarezza quali sono le parti principali del software e come interagiscono fra loro.
- \item Si mette in evidenza se e come il pattern architetturale model-view-controller è stato applicato, anche con l'uso di un UML che mostri le interfacce principali ed i rapporti fra loro.
- \item Si discute se sia semplice o meno, con l'architettura scelta, sostituire in blocco la view:
- 	in un MVC ben fatto, controller e modello non dovrebbero in alcun modo cambiare se si transitasse da una libreria grafica ad un'altra (ad esempio, da Swing a JavaFX, o viceversa).
-\end{itemize}
-
-\subsection*{Elementi negativi}
-\begin{itemize}
- \item L'architettura è fatta in modo che sia impossibile riusare il modello per un software diverso che affronta lo stesso problema.
- \item L'architettura è tale che l'aggiunta di una funzionalità sul controller impatta pesantemente su view e/o modello.
- \item L'architettura è tale che la sostituzione in blocco della view impatta sul controller o, peggio ancora, sul modello.
- \item Si presentano UML caotici, difficili da leggere.
- \item Si presentano UML in cui sono mostrati elementi di dettaglio non appartenenti all'architettura, ad esempio includenti campi o con metodi che non interessano la parte di interazione fra le componenti principali del software.
- \item Si presentano schemi UML con classi (nel senso UML del termine) che ``galleggiano'' nello schema, non connesse, ossia senza relazioni con il resto degli elementi inseriti.
- \item Si presentano elementi di design di dettaglio, ad esempio tutte le classi e interfacce del modello o della view.
- \item Si discutono aspetti implementativi, ad esempio eventuali librerie usate oppure dettagli di codice.
-\end{itemize}
-
-\subsection*{Esempio}
-
-L'architettura di GLaDOS segue il pattern architetturale MVC.
-%
-Più nello specifico, a livello architetturale, si è scelto di utilizzare MVC in forma ``ECB'', ossia ``entity-control-boundary''\footnote{
-Si fa presente che il pattern ECB effettivamente esiste in letteratura come ``istanza'' di MVC, e chi volesse può utilizzarlo come reificazione di MVC.
-}.
-%
-GLaDOS implementa l'interfaccia AI, ed è il controller del sistema.
-Essendo una intelligenza artificiale, è una classe attiva.
-%
-GLaDOS accetta la registrazione di Input ed Output, che fanno parte della ``view'' di MVC, e sono il ``boundary'' di ECB.
-Gli Input rappresentano delle nuove informazioni che vengono fornite all'IA, ad esempio delle modifiche nel valore di un sensore, oppure un comando da parte dell'operatore.
-Questi input infatti forniscono eventi.
-Ottenere un evento è un'operazione bloccante: chi la esegue resta in attesa di un effettivo evento.
-Di fatto, quindi, GLaDOS si configura come entità \textit{reattiva}.
-Ogni volta che c'è un cambio alla situazione del soggetto, GLaDOS notifica i suoi Output,
-informandoli su quale sia la situazione corrente.
-%
-Conseguentemente, GLaDOS è un ``observable'' per Output.
-
-\begin{figure}[h]
-\centering{}
-\includegraphics[width=\textwidth]{img/arch}
-\caption{Schema UML architetturale di GLaDOS. L'interfaccia \texttt{GLaDOS} è il controller del sistema, mentre \texttt{Input} ed \texttt{Output} sono le interfacce che mappano la view (o, più correttamente in questo specifico esempio, il boundary). Un'eventuale interfaccia grafica interattiva dovrà implementarle entrambe.}
-\label{img:goodarch}
-\end{figure}
-
-Con questa architettura, possono essere aggiunti un numero arbitrario di input ed output
-all'intelligenza artificiale.
-%
-Ovviamente, mentre l'aggiunta di output è semplice e non richiede alcuna modifica all'IA, la
-presenza di nuovi tipi di evento richiede invece in potenza aggiunte o rifiniture a GLaDOS.
-%
-Questo è dovuto al fatto che nuovi Input rappresentano di fatto nuovi elementi della business
-logic, la cui alterazione od espansione inevitabilmente impatta il controller del progetto.
-
-In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
+L'architettura di CoffeeBreak segue il pattern architetturale MVC. Questo pattern è studiato 
+per suddividere i compiti fra il Modello, Controller e View, permettendo di 
+lavorare in settori distinti. Grazie a questa struttura, è possibile modificare 
+un determinato settore senza stravolgere l'intero sistema. Ad esempio, l'aspetto grafico 
+può essere migliorato senza impattare sulla logica del gioco.
 
 
 \section{Design dettagliato}
@@ -441,6 +253,13 @@ Questo schema è fatto male perché:
 \label{img:badarch}
 \end{figure}
 
+\subsection{Grazia Bochdanovits de Kavna}
+
+\subsection{Lorenzo Boccuzzi}
+
+\subsection{Alessandro Rebosio}
+
+\subsection{Filippo Ricciotti}
 
 \chapter{Sviluppo}
 \section{Testing automatizzato}
@@ -561,7 +380,13 @@ e non va in questa sezione.
 	\item Si elencano design pattern
 \end{itemize}
 
-\subsection{Esempio}
+\subsection{Grazia Bochdanovits de Kavna}
+
+\subsection{Lorenzo Boccuzzi}
+
+\subsection{Alessandro Rebosio}
+
+\subsection{Filippo Ricciotti}
 
 \subsubsection{Utilizzo della libreria SLF4J}
 
@@ -604,6 +429,14 @@ Si dovrà anche cercare di descrivere \emph{in modo quanto più obiettivo possib
 Si ricorda, a tal proposito, che ciascuno studente è responsabile solo della propria sezione: non è un problema se ci sono opinioni contrastanti, a patto che rispecchino effettivamente l'opinione di chi le scrive.
 Nel caso in cui si pensasse di portare avanti il progetto, ad esempio perché effettivamente impiegato, o perché sufficientemente ben riuscito da poter esser usato come dimostrazione di esser capaci progettisti, si descriva brevemente verso che direzione portarlo.
 
+\subsection{Grazia Bochdanovits de Kavna}
+
+\subsection{Lorenzo Boccuzzi}
+
+\subsection{Alessandro Rebosio}
+
+\subsection{Filippo Ricciotti}
+
 \section{Difficoltà incontrate e commenti per i docenti}
 
 Questa sezione, \textbf{opzionale}, può essere utilizzata per segnalare ai docenti eventuali problemi o difficoltà incontrate nel corso o nello svolgimento del progetto, può essere vista come una seconda possibilità di valutare il corso (dopo quella offerta dalle rilevazioni della didattica) avendo anche conoscenza delle modalità e delle difficoltà collegate all'esame, cosa impossibile da fare usando le valutazioni in aula per ovvie ragioni.
@@ -612,67 +445,45 @@ Questa sezione, \textbf{opzionale}, può essere utilizzata per segnalare ai doce
 %
 Ovviamente \textit{il contenuto della sezione non impatterà il voto finale}.
 
+
 \appendix
-\chapter{Guida utente}
 
-Capitolo in cui si spiega come utilizzare il software. Nel caso in cui il suo uso sia del tutto
-banale, tale capitolo può essere omesso.
-%
-A tal riguardo, si fa presente agli studenti che i docenti non hanno mai utilizzato il software
-prima, per cui aspetti che sembrano del tutto banali a chi ha sviluppato l'applicazione possono non
-esserlo per chi la usa per la prima volta.
-%
-Se, ad esempio, per cominciare una partita con un videogioco è necessario premere la barra
-spaziatrice, o il tasto ``P'', è necessario che gli studenti lo segnalino.
+\chapter{Guida Utente}
 
-\subsection*{Elementi positivi}
+All'avvio del gioco, verrà presentato un menu principale, dal quale sarà possibile iniziare una nuova partita premendo il tasto \textbf{ENTER} oppure chiudere l'applicativo premendo il tasto \textbf{Q}.
+
+Durante il gioco, i movimenti del personaggio saranno controllati tramite le frecce direzionali:
 
 \begin{itemize}
- \item Si istruisce in modo semplice l'utente sull'uso dell'applicazione, eventualmente facendo uso di schermate e descrizioni.
+    \item \textbf{FRECCIA SU}: consente di salire una scala quando ci si trova nelle vicinanze.
+    \item \textbf{FRECCIA GIÙ}: permette di scendere una scala quando ci si trova nelle vicinanze.
+    \item \textbf{FRECCIA DESTRA}: sposta il personaggio verso destra.
+    \item \textbf{FRECCIA SINISTRA}: sposta il personaggio verso sinistra.
+    \item \textbf{ESC}: mette il gioco in pausa.
 \end{itemize}
+%
+Quando il gioco è in pausa, i controlli sono i seguenti:
 
-\subsection*{Elementi negativi}
 \begin{itemize}
- \item Si descrivono in modo eccessivamente minuzioso tutte le caratteristiche, anche minori, del software in oggetto.
- \item Manca una descrizione che consenta ad un utente qualunque di utilizzare almeno le funzionalità primarie dell'applicativo.
+    \item \textbf{FRECCIA SU}: sposta la selezione verso l'alto.
+    \item \textbf{FRECCIA GIÙ}: sposta la selezione verso il basso.
+    \item \textbf{ENTER}: seleziona l'opzione evidenziata.
 \end{itemize}
+%
+In caso di Game Over, sarà possibile, premere \textbf{ENTER}, per tornare al menù principale. 
+Buona fortuna! Ricorda di salvare la damigella prima che sia troppo tardi!
 
 \chapter{Esercitazioni di laboratorio}
 
-In questo capitolo ciascuno studente elenca gli esercizi di laboratorio che ha svolto
-(se ne ha svolti),
-elencando i permalink dei post sul forum dove è avvenuta la consegna.
-%
-Questa sezione potrebbe essere processata da strumenti automatici,
-per cui link a oggetti diversi dal permalink della consegna,
-errori nell'email o nel nome del laboratorio possono portare ad ignorare alcune consegne,
-si raccomanda la massima precisione.
-
-\section*{Esempio}
-
-\subsection{paolino.paperino@studio.unibo.it}
+\section{alessandro.rebosio@studio.unibo.it}
 
 \begin{itemize}
- \item Laboratorio 04: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=12345#p123456}
- \item Laboratorio 06: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=22222#p222222}
- \item Laboratorio 09: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=99999#p999999}
+ 	\item Laboratorio 07: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=177162#p246059}
+	\item Laboratorio 09: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=179154#p248324}
+	\item Laboratorio 10: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=180101#p249805}
+	\item Laboratorio 11: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=181206#p250995}
 \end{itemize}
 
-\subsection{paperon.depaperoni@studio.unibo.it}
-
-\begin{itemize}
- \item Laboratorio 04: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=12345#p123456}
- \item Laboratorio 05: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=22222#p222222}
- \item Laboratorio 06: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=99999#p999999}
- \item Laboratorio 07: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=22222#p222222}
- \item Laboratorio 08: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=99999#p999999}
- \item Laboratorio 09: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=22222#p222222}
- \item Laboratorio 10: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=99999#p999999}
- \item Laboratorio 11: \url{https://virtuale.unibo.it/mod/forum/discuss.php?d=22222#p222222}
-\end{itemize}
-
-
-\bibliographystyle{alpha}
-\bibliography{13-template}
+\bibliography{report}
 
 \end{document}
