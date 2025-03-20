@@ -7,3 +7,132 @@ CoffeBreak ha le stesse meccaniche di Donkey Kong. Uno studente cerca di farsi l
  - lorenzo.boccuzzi@studio.unibo.it
  - alessandro.rebosio@studio.unibo.it
  - filippo.ricciotti@studio.unibo.it
+
+# Diagramma UML
+```mermaid
+classDiagram
+
+    %% === MODEL ===
+    class GameEntity {
+        +update()
+        +render()
+    }
+
+    class Player {
+        +move()
+        +jump()
+        +collectItem()
+    }
+
+    class Enemy {
+        +move()
+        +attack()
+    }
+
+    class Barrel {
+        +roll()
+    }
+
+    class Fire {
+        +chasePlayer()
+    }
+
+    class Platform {
+        +supportPlayer()
+    }
+
+    class Collectible {
+        +applyEffect()
+    }
+
+    class GameState {
+        +currentState: String
+        +setState()
+    }
+
+    class ScoreManager {
+        +score: int
+        +increaseScore()
+    }
+
+    class CollisionManager {
+        +checkCollisions()
+    }
+
+    class DifficultyManager {
+        +increaseDifficulty()
+    }
+
+    class SoundManager {
+        +playSound()
+        +stopSound()
+    }
+
+    class GameEngine {
+        +updateGame()
+        +renderGame()
+    }
+
+    class InputManager {
+        +processInput()
+    }
+
+    class PhysicsManager {
+        +applyGravity()
+        +resolveCollisions()
+    }
+
+    GameEntity <|-- Player
+    GameEntity <|-- Enemy
+    Enemy <|-- Barrel
+    Enemy <|-- Fire
+    GameEntity <|-- Platform
+    GameEntity <|-- Collectible
+    Collectible <|-- Coin
+    Collectible <|-- PowerUp
+
+    GameState <|-- MenuState
+    GameState <|-- InGameState
+    GameState <|-- PauseState
+    GameState <|-- GameOverState
+
+    GameEngine *-- GameState
+    GameEngine *-- ScoreManager
+    GameEngine *-- CollisionManager
+    GameEngine *-- DifficultyManager
+    GameEngine *-- SoundManager
+    GameEngine *-- Player
+    GameEngine *-- Enemy
+    GameEngine *-- Platform
+    GameEngine *-- Collectible
+    GameEngine *-- PhysicsManager
+
+    <<Interface>> GameEntity 
+    <<Interface>> InputManager 
+
+    %% === VIEW ===
+    class GameView {
+        +render()
+    }
+
+    GameView <|-- MenuView
+    GameView <|-- InGameView
+    GameView <|-- PauseView
+    GameView <|-- GameOverView
+
+    GameView o-- GameEngine
+
+    %% === CONTROLLER ===
+    class GameController {
+        +handleInput()
+    }
+
+    GameController --> GameEngine
+    InputManager --> GameController
+    GameView --> InputManager
+
+    %% Entry Points
+    GameController <..> GameView : "User Input"
+    GameView <..> GameEngine : "Render Update"
+    GameController <..> GameEngine : "Game Logic"
+```
