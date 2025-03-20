@@ -8,7 +8,24 @@ bin/
 # Ignore Idea customizations
 .idea
 
+# Ignore VsCode customizations
+.vscode
+
 # Ignore Eclipse settings
 .project
 .settings/
 .classpath
+
+# Ignore MacOS file
+.DS_Store
+
+# Ingore LaTeX file
+*.toc
+*.synctex.gz
+*.synctex.blg
+*.log
+*.out
+*.aux
+*.blg
+*.fdb_latexmk
+*.fls
